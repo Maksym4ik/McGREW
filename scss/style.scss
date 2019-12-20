@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,900&display=swap');
+$PrimaryColor: rgb(255, 255, 255);
+$SecondaryColor: rgb(0, 181, 210);
+$BtnColor: rgb(226, 170, 111);
+$BtnShadow: rgb(186, 142, 91);
+$navoff: rgb(69, 69, 70);
+$navon: rgb(69, 69, 70);
+$JoinUsColor: rgb(54, 122, 183);
+$Btn2Color: rgb(0, 181, 210);
+$Btn2Shadow: rgb(0, 142, 165);
+$Footer: #cccccc;
+$Footer2Color: rgb(170, 170, 170);
+$FooterNav: #999999;
+
+@mixin text {
+  line-height: 1.6;
+  font-size: 18px;
+  font-family: "Lato";
+  color: $PrimaryColor;
+}
+
+@mixin flexColCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//h1 style
+h1 {
+  font-size: 48px;
+  font-weight: 900;
+  color: $PrimaryColor;
+}
+
+//h2 style
+h2 {
+  font-size: 24px;
+  color: rgb(119, 119, 119);
+  font-weight: 700;
+
+}
+
+//button style
+button {
+  cursor: pointer;
+  border: none;
+  background-color: $BtnColor;
+  color: $PrimaryColor;
+  text-transform: uppercase;
+  font-size: 20px;
+  width: 290px;
+  height: 60px;
+  box-shadow: 0 10px 0 0 $BtnShadow;
+
+  &:active {
+    transform: translateY(8px);
+    box-shadow: 0 2px 0 0 $BtnShadow;
+    transition: ease 0.1s all;
+  }
+
+  &:hover {
+    background-color: rgba(226, 170, 111, 0.9);
+    ;
+  }
+}
+
+
+//classssic
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  background-color: $PrimaryColor;
+}
+
+//menu wrapper, buttons, close item
+.menu-close {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(225, 255, 255, 0.4);
+  z-index: 25;
+  display: none;
+}
+
+.menu-wrapper {
+  display: flex;
+  width: 200px;
+  height: 300px;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 30;
+  top: -100%;
+  left: calc(50% - 100px);
+  transition: ease 0.4s all;
+
+  a {
+    font-size: 30px;
+    font-weight: 900;
+    color: $PrimaryColor;
+    height: 90px;
+    width: 100%;
+    background-color: $SecondaryColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+
+  }
+
+  a:active {
+    font-size: 25px;
+  }
+}
+
+//first Screen Header + nav
+.header {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../img/header.jpg);
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  @include flexColCenter;
+
+  //main wraper for header
+  &__wrapper {
+    height: calc(100vh - 100px);
+    width: 95%;
+
+    &__navigation {
+      margin: 0 auto;
+      padding-top: 40px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        width: 360px;
+        height: 30px;
+      }
+
+      //menu button
+      .menu {
+        padding-left: 12px;
+        color: $PrimaryColor;
+        text-transform: uppercase;
+        height: 30px;
+        width: 100px;
+        font-size: 25px;
+        background-color: $SecondaryColor;
+        transition: ease 0.2s all;
+        cursor: pointer;
+        z-index: 50;
+        display: none;
+
+        &:hover {
+          filter: brightness(0.8);
+        }
+
+        &:active {
+          transform: translateY(3px);
+        }
+      }
+
+      //nav links
+      &__links {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 280px;
+
+        .navItem {
+          cursor: pointer;
+          position: relative;
+          text-transform: uppercase;
+          font-size: 16px;
+          color: $navoff;
+
+          &:before {
+            content: "";
+            width: 0%;
+            height: 5px;
+            left: 50%;
+            position: absolute;
+            transition: ease 0.2s all;
+            top: 55px;
+          }
+
+        }
+
+        .navItem:hover {
+          &:before {
+            content: "";
+            left: 0%;
+            background-color: $SecondaryColor;
+            width: 100%;
+            height: 5px;
+            top: 55px;
+          }
+        }
+      }
+    }
+
+    //header text style
+    &__mainText {
+      margin-top: 180px;
+
+      h1 {
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+      }
+
+      span {
+        display: block;
+        width: 450px;
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+        @include text;
+      }
+    }
+
+    .button {
+      margin-top: 50px;
+    }
+
+    //images partners logo
+  }
+
+  &__partners {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 100px;
+    width: 100%;
+    background-color: $PrimaryColor;
+    justify-items: center;
+    align-items: center;
+
+    img {
+
+      height: 40px;
+    }
+  }
+}
+
+//part of contact us 
+
+//first part background text and svg image
+.contact {
+  width: 100%;
+  height: 500px;
+  background-color: $SecondaryColor;
+  @include flexColCenter;
+  justify-content: flex-end;
+
+  //aside about support
+  .contact__wrapper {
+    margin-bottom: 80px;
+    width: 900px;
+    height: 100px;
+    @include flexColCenter;
+
+    span {
+      @include text;
+    }
+  }
+
+  object {
+    height: 220px;
+  }
+
+}
+
+//block contact us
+.contactUs {
+  width: 100%;
+  height: 360px;
+  background-color: $PrimaryColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  //text info in contact
+  &__info {
+    width: 62, 5%;
+    height: 220px;
+    @include flexColCenter;
+
+    span {
+      text-align: center;
+      width: 760px;
+      font-size: 18px;
+      color: rgb(68, 68, 68);
+      line-height: 1.7;
+    }
+  }
+}
+
+//slider
+
+.slider {
+  width: 100%;
+  height: 600px;
+  //sliderbar background
+  background-image: url(/img/bgSlider.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 110px;
+
+  &__wrapper {
+    //image slider size
+    width: 800px;
+    padding-top: 140px;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
+
+  }
+}
+
+
+// block join our team
+.join {
+  display: flex;
+  flex-direction: row;
+  height: 440px;
+  margin-bottom: 60px;
+
+  //left image
+  &__image {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/img/joinUs.jpg');
+  }
+
+  //right bar with button
+  &__info {
+    width: 50%;
+    height: 100%;
+    background-color: $JoinUsColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__wrapper {
+      width: 90%;
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      span {
+        font-size: 18px;
+        color: $PrimaryColor;
+        font-style: italic;
+      }
+
+      p {
+        font-size: 18px;
+        color: rgb(255, 255, 255);
+        line-height: 1.6;
+        width: 485px;
+
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        background-color: $Btn2Color;
+        color: $PrimaryColor;
+        text-transform: uppercase;
+        font-size: 20px;
+        width: 290px;
+        height: 60px;
+        box-shadow: 0 10px 0 0 $Btn2Shadow;
+
+        &:active {
+          transform: translateY(8px);
+          box-shadow: 0 2px 0 0 $Btn2Shadow;
+          transition: ease 0.1s all;
+        }
+
+        &:hover {
+          background-color: rgba(0, 182, 210, 0.808);
+          ;
+        }
+      }
+    }
+  }
+}
+
+//footer
+
+footer {
+  height: 300px;
+  width: 95%;
+  border-top: 3px solid $Footer;
+  border-bottom: 1px solid $Footer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .footerWrapper {
+    @include flexColCenter;
+    width: 450px;
+    height: 200px;
+
+    nav {
+      width: 455px;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        color: $FooterNav;
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+    }
+
+    .sklad {
+      width: 120px;
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      background-color: red;
+
+      .boxiki {
+        width: 13px;
+        height: 13px;
+        background-color: $Footer;
+      }
+
+    }
+
+    .links {
+      width: 315px;
+      height: 80px;
+      @include flexColCenter;
+
+      a {
+        text-decoration: none;
+        font-size: 14px;
+        color: rgb(170, 170, 170);
+
+        &:nth-last-child(1) {
+          color: #e1aa6e;
+        }
+      }
+
+    }
+  }
+
+
+}
+
+
+.subFooter {
+  height: 100px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 12px;
+    color: rgba(170, 170, 170, 0.6);
+
+  }
+}
